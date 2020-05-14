@@ -110,10 +110,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   // perform the algorithm
   // edits
-  VertexT start_src;
-  VertexT end_src;
-  start_src = 0;
-  end_src = graph->nodes;
+  //VertexT start_src;
+  //VertexT end_src;
+  //start_src = 0;
+  //end_src = graph->nodes;
   // edits done
   VertexT src;
 
