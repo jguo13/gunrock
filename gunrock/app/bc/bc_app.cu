@@ -109,6 +109,20 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   parameters.Set("preprocess-time", cpu_timer.ElapsedMillis());
 
   // perform the algorithm
+  // edits
+  start_src = 0;
+  end_src = graph->nodes;
+            
+  for (VertexId i = start_src; i < end_src; ++i) {
+  util::GRError(problem->Reset(i, enactor->GetFrontierType(),
+                               max_queue_sizing, max_queue_sizing1),
+                "BC Problem Data Reset Failed", __FILE__, __LINE__);
+  util::GRError(enactor->Reset(), "BC Enactor Reset failed", __FILE__,
+                __LINE__);
+  util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
+                __LINE__);
+}
+  // edits done
   VertexT src;
   for (int run_num = 0; run_num < num_runs; ++run_num) {
     auto run_index = run_num % num_srcs;
