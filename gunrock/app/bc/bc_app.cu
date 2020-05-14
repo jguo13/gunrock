@@ -110,47 +110,43 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   // perform the algorithm
   // edits
+  VertexId start_src;
+  VertexId end_src;
   start_src = 0;
   end_src = graph->nodes;
             
-  for (VertexId i = start_src; i < end_src; ++i) {
-  util::GRError(problem->Reset(i, enactor->GetFrontierType(),
-                               max_queue_sizing, max_queue_sizing1),
-                "BC Problem Data Reset Failed", __FILE__, __LINE__);
-  util::GRError(enactor->Reset(), "BC Enactor Reset failed", __FILE__,
-                __LINE__);
-  util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
-                __LINE__);
 }
   // edits done
   VertexT src;
   for (int run_num = 0; run_num < num_runs; ++run_num) {
-    auto run_index = run_num % num_srcs;
-    src = srcs[run_index];
-    GUARD_CU(problem.Reset(src, target));
-    GUARD_CU(enactor.Reset(src, target));
-    util::PrintMsg("__________________________", !quiet_mode);
-    cpu_timer.Start();
-    GUARD_CU(enactor.Enact(src));
+    for (VertexId i = start_src; i < end_src; ++i) {
+      auto run_index = run_num % num_srcs;
+      src = srcs[run_index];
+      GUARD_CU(problem.Reset(src, target));
+      GUARD_CU(enactor.Reset(src, target));
+      util::PrintMsg("__________________________", !quiet_mode);
+      cpu_timer.Start();
+      GUARD_CU(enactor.Enact(src));
 
-    cpu_timer.Stop();
-    info.CollectSingleRun(cpu_timer.ElapsedMillis());
+      cpu_timer.Stop();
+      info.CollectSingleRun(cpu_timer.ElapsedMillis());
 
-    util::PrintMsg(
-        "--------------------------\nRun " + std::to_string(run_num) +
-            " elapsed: " + std::to_string(cpu_timer.ElapsedMillis()) +
-            " ms, src = " + std::to_string(src) + ", #iterations = " +
-            std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
-        !quiet_mode);
+      util::PrintMsg(
+          "--------------------------\nRun " + std::to_string(run_num) +
+              " elapsed: " + std::to_string(cpu_timer.ElapsedMillis()) +
+              " ms, src = " + std::to_string(src) + ", #iterations = " +
+              std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
+          !quiet_mode);
 
-    if (validation == "each") {
-      GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
-      SizeT num_errors = app::bc::Validate_Results(
-          parameters, graph, src, h_bc_values, h_sigmas, h_labels,
-          reference_bc_values == NULL ? NULL : reference_bc_values[run_index],
-          reference_sigmas == NULL ? NULL : reference_sigmas[run_index],
-          reference_labels == NULL ? NULL : reference_labels[run_index], true);
-    }
+      if (validation == "each") {
+        GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
+        SizeT num_errors = app::bc::Validate_Results(
+            parameters, graph, src, h_bc_values, h_sigmas, h_labels,
+            reference_bc_values == NULL ? NULL : reference_bc_values[run_index],
+            reference_sigmas == NULL ? NULL : reference_sigmas[run_index],
+            reference_labels == NULL ? NULL : reference_labels[run_index], true);
+      }
+      }
   }
 
   cpu_timer.Start();
