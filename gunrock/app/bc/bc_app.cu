@@ -113,7 +113,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT start_src;
   VertexT end_src;
   start_src = 0;
-  end_src = graph->nodes;
+  end_src = 39;
   // edits done
   VertexT src;
 
