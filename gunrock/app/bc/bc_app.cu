@@ -141,7 +141,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
-      util::PrintMsg("========TEST CODE PRINT1=========%d", h_bc_values[0], !quiet_mode);
+      util::PrintMsg("--------------------------\nRun====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+      util::PrintMsg("--------------------------\nRun=====1 " + std::to_string(h_bc_values), !quiet_mode);
       util::PrintMsg("TEST2=======%d",h_bc_values,!quiet_mode);
 
       if (validation == "each") {
