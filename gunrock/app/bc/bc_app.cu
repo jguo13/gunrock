@@ -118,8 +118,6 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT src;
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
-      util::PrintMsg("========TEST CODE PRINT5=========%c", h_bc_values, !quiet_mode);
-
       auto run_index = run_num % num_srcs;
       src = srcs[run_index];
       GUARD_CU(problem.Reset(src, target));
@@ -127,23 +125,22 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
-      util::PrintMsg("TEST=======%c",h_bc_values,!quiet_mode);
-
-      util::PrintMsg("END=======%c",h_bc_values,!quiet_mode);
-
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
-      util::PrintMsg("========TEST CODE PRINT0=========%f", h_bc_values[0], !quiet_mode);
-
       util::PrintMsg(
           "--------------------------\nRun " + std::to_string(run_num) +
               " elapsed: " + std::to_string(cpu_timer.ElapsedMillis()) +
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
-      util::PrintMsg("--------------------------\nRun====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
-      util::PrintMsg("--------------------------\nRun=====1 " + std::to_string(h_bc_values[0]), !quiet_mode);
-      util::PrintMsg("TEST2=======%d",h_bc_values,!quiet_mode);
+      util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+      util::PrintMsg("--------------------------\nH_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
+      util::PrintMsg("--------------------------\nH_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
+      util::PrintMsg("--------------------------\nH_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
+      util::PrintMsg("--------------------------\nSIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
+      util::PrintMsg("--------------------------\nSIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
+      util::PrintMsg("--------------------------\nSIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
+      util::PrintMsg("--------------------------\nSIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
 
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
