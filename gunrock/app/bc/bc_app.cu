@@ -110,10 +110,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   // perform the algorithm
   // edits
-  //VertexT start_src;
-  //VertexT end_src;
-  //start_src = 0;
-  //end_src = graph->nodes;
+  VertexT start_src;
+  VertexT end_src;
+  start_src = 0;
+  end_src = graph->nodes;
   // edits done
   VertexT src;
 
@@ -159,7 +159,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
             
-            
+  //edits start       
   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
@@ -168,7 +168,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
-
+  //edits done
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
     SizeT num_errors = app::bc::Validate_Results(
