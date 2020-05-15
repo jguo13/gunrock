@@ -129,6 +129,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
+      util::PrintMsg("========TEST CODE PRINT0=========", h_bc_values[0], !quiet_mode);
 
       util::PrintMsg(
           "--------------------------\nRun " + std::to_string(run_num) +
@@ -136,7 +137,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
-      util::PrintMsg("========TEST CODE PRINT=========", h_bc_values[0], !quiet_mode);
+      util::PrintMsg("========TEST CODE PRINT1=========", h_bc_values[0], !quiet_mode);
 
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
@@ -151,6 +152,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   cpu_timer.Start();
   // Copy out results
+  util::PrintMsg("========TEST CODE PRINT3=========", h_bc_values[0], !quiet_mode);
+
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
