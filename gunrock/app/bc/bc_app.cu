@@ -158,6 +158,17 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::PrintMsg("========TEST CODE PRINT3=========%c", h_bc_values,!quiet_mode);
 
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
+            
+            
+  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
+  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
+
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
     SizeT num_errors = app::bc::Validate_Results(
