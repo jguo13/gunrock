@@ -145,7 +145,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("========TEST CODE PRINT1=========", h_bc_values[0], !quiet_mode);
       util::PrintMsg("TEST2=======",!quiet_mode);
 
-      util::PrintMsg(*h_bc_values,!quiet_mode);
+      util::PrintMsg(h_bc_values[0],!quiet_mode);
       util::PrintMsg("END2=======",!quiet_mode);
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
