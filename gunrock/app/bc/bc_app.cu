@@ -136,7 +136,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
-      util::PrintMsg("========TEST CODE PRINT=========",h_bc_values, "next part",problem.Extract(h_bc_values, h_sigmas, h_labels),"end", !quiet_mode);
+      util::PrintMsg("========TEST CODE PRINT=========", h_bc_values, "next part", h_sigmas, "label ", h_labels, "end", !quiet_mode);
 
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
