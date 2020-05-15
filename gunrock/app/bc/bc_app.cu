@@ -127,7 +127,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
-      util::PrintMsg("========TEST CODE PRINT4=========", h_bc_values, "END",!quiet_mode);
+      util::PrintMsg("TEST=======",!quiet_mode);
+
+      util::PrintMsg(h_bc_values,!quiet_mode);
+      util::PrintMsg("END=======",!quiet_mode);
 
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
@@ -140,7 +143,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
       util::PrintMsg("========TEST CODE PRINT1=========", h_bc_values[0], !quiet_mode);
+      util::PrintMsg("TEST2=======",!quiet_mode);
 
+      util::PrintMsg(*h_bc_values,!quiet_mode);
+      util::PrintMsg("END2=======",!quiet_mode);
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
         SizeT num_errors = app::bc::Validate_Results(
