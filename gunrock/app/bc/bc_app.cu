@@ -118,7 +118,6 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT src;
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
-      util::PrintMsg("========TEST CODE PRINT=========",h_bc_values, !quiet_mode);
 
       auto run_index = run_num % num_srcs;
       src = srcs[run_index];
@@ -137,6 +136,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
+      util::PrintMsg("========TEST CODE PRINT=========",h_bc_values, "next part",problem.Extract(h_bc_values, h_sigmas, h_labels),"end", !quiet_mode);
 
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
