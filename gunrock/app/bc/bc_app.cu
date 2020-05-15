@@ -118,6 +118,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT src;
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
+      util::PrintMsg("========TEST CODE PRINT5=========", h_bc_values[0], !quiet_mode);
 
       auto run_index = run_num % num_srcs;
       src = srcs[run_index];
@@ -126,6 +127,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
+      util::PrintMsg("========TEST CODE PRINT4=========", h_bc_values, !quiet_mode);
 
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
