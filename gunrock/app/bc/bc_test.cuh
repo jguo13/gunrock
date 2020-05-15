@@ -214,14 +214,14 @@ typename GraphT::SizeT Validate_Results(
 
   if (!quiet && verbose) {
     //begin edit
-    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST SIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
-    util::PrintMsg("--------------------------\nBC_TEST SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
+    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES====0 " + std::to_string(h_bc_values[0]));
+    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]));
+    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES====2 " + std::to_string(h_bc_values[2]));
+    util::PrintMsg("--------------------------\nBC_TEST H_BC_VALUES=====3 " + std::to_string(h_bc_values[3]));
+    util::PrintMsg("--------------------------\nBC_TEST SIGMA====0 " + std::to_string(h_sigmas[0]));
+    util::PrintMsg("--------------------------\nBC_TEST SIGMA=====1 " + std::to_string(h_sigmas[1]));
+    util::PrintMsg("--------------------------\nBC_TEST SIGMA====2 " + std::to_string(h_sigmas[2]));
+    util::PrintMsg("--------------------------\nBC_TEST SIGMA=====3 " + std::to_string(h_sigmas[3]));
 
     //end edit
     // Display Solution
