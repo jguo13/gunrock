@@ -121,8 +121,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   for (int run_num = 0; run_num < num_runs; ++run_num) {
       auto run_index = run_num % num_srcs;
       src = srcs[run_index];
-      GUARD_CU(problem.Reset(src, target));
-      GUARD_CU(enactor.Reset(src, target));
+      GUARD_CU(problem.Reset(i, target));
+      GUARD_CU(enactor.Reset(i, target));
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
