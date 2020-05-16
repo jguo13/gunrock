@@ -114,16 +114,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT end_src;
   start_src = 0;
   end_src = 39;
-            
-  for (VertexT i = start_src; i < end_src; ++i) {
-    util::GRError(problem->Reset(i, enactor->GetFrontierType(),
-                                 max_queue_sizing, max_queue_sizing1),
-                  "BC Problem Data Reset Failed", __FILE__, __LINE__);
-    util::GRError(enactor->Reset(), "BC Enactor Reset failed", __FILE__,
-                  __LINE__);
-    util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
-                  __LINE__);
-  }
+           
             
             
 
