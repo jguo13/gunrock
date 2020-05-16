@@ -144,14 +144,14 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
               " ms, src = " + std::to_string(src) + ", #iterations = " +
               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
           !quiet_mode);
-      util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
-      util::PrintMsg("--------------------------\nH_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
-      util::PrintMsg("--------------------------\nH_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
-      util::PrintMsg("--------------------------\nH_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
-      util::PrintMsg("--------------------------\nSIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
-      util::PrintMsg("--------------------------\nSIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
-      util::PrintMsg("--------------------------\nSIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
-      util::PrintMsg("--------------------------\nSIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nH_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nH_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nH_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nSIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nSIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nSIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
+//       util::PrintMsg("--------------------------\nSIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
 
       if (validation == "each") {
         GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
@@ -161,7 +161,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
             reference_sigmas == NULL ? NULL : reference_sigmas[run_index],
             reference_labels == NULL ? NULL : reference_labels[run_index], true);
       }
-  }
+//   }
   }
 
   cpu_timer.Start();
@@ -179,7 +179,9 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
-  //edits done
+//edited for loop end
+  }
+    //edits done
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
     SizeT num_errors = app::bc::Validate_Results(
