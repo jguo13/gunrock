@@ -122,14 +122,14 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT src;
             
 
-//   for (VertexT i = start_src; i < end_src; ++i) {
+  for (VertexT i = start_src; i < end_src; ++i) {
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
       auto run_index = run_num % num_srcs;
 //       src = srcs[run_index];
 
-      src = srcs[run_num];
-      util::PrintMsg("--------------------------\nsrcs=====1 " + std::to_string(srcs[1]), !quiet_mode);
+      src = srcs[i];
+      util::PrintMsg("--------------------------\nsrcs=====1 " + std::to_string(src), !quiet_mode);
 
       GUARD_CU(problem.Reset(src, target));
       GUARD_CU(enactor.Reset(src, target));
@@ -161,7 +161,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
             reference_sigmas == NULL ? NULL : reference_sigmas[run_index],
             reference_labels == NULL ? NULL : reference_labels[run_index], true);
       }
-//   }
+  }
   }
 
   cpu_timer.Start();
