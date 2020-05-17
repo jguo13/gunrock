@@ -99,6 +99,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   ValueT *h_bc_values = new ValueT[graph.nodes];
   ValueT *h_sigmas = new ValueT[graph.nodes];
   VertexT *h_labels = new VertexT[graph.nodes];
+  ValueT *h_total_bc_values = new ValueT[graph.nodes];
 
   // Allocate problem and enactor on GPU, and initialize them
   ProblemT problem(parameters);
@@ -166,7 +167,18 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   cpu_timer.Start();
   // Copy out results
-  util::PrintMsg("========TEST CODE PRINT3=========%c", h_bc_values,!quiet_mode);
+  util::PrintMsg("========TEST CODE PRINT3=========%c", 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 _values,!quiet_mode);
 
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
             
@@ -179,9 +191,15 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
-//edited for loop end
+  for (i=0; i < end_src; i++)
+    {
+       h_total_bc_values[i] += h_bc_values[i];   // aggregate the sums into the first array
+    }
+  //edited for loop end
   }
     //edits done
+  util::PrintMsg("--------------------------\n===========FINALLLLLLLLLLLL first H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
+
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
     SizeT num_errors = app::bc::Validate_Results(
