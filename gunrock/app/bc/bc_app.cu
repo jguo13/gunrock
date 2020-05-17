@@ -114,7 +114,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT start_src;
   VertexT end_src;
   start_src = 0;
-  end_src = 39;
+  end_src = graph.nodes;
            
             
             
@@ -133,7 +133,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 //       src = srcs[run_index];
 
       src = i;
-      util::PrintMsg("--------------------------\nsrcs=====1 " + std::to_string(src), !quiet_mode);
+//       util::PrintMsg("--------------------------\nsrcs=====1 " + std::to_string(src), !quiet_mode);
 
       GUARD_CU(problem.Reset(src, target));
       GUARD_CU(enactor.Reset(src, target));
