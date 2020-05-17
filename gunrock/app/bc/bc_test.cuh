@@ -225,7 +225,7 @@ typename GraphT::SizeT Validate_Results(
 
     //end edit
     // Display Solution
-    DisplaySolution(h_bc_values, h_sigmas, num_vertices, quiet);
+    DisplaySolution(h_total_bc_values, h_sigmas, num_vertices, quiet);
   }
 
   return num_errors;
