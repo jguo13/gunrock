@@ -193,7 +193,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   }
   
     //edits done
-  util::PrintMsg("--------------------------\n===========The total of the BC list====0 " + h_total_bc_values, !quiet_mode);
+  util::PrintMsg("--------------------------\n===========START The total of the BC list==================" + !quiet_mode);
+  for (VertexT l=0; l < end_src; l++)
+  {
+    util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
+  }
+   util::PrintMsg("--------------------------\n===========END The total of the BC list==================" + !quiet_mode);
 
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
