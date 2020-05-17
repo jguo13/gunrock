@@ -123,8 +123,6 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT src;
   for (VertexT k=0; k < end_src; k++)
   {
-    util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
-
      h_total_bc_values[k] = 0;   // aggregate the sums into the first array
   }      
 
@@ -177,14 +175,14 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
             
   //edits start       
-  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
-  util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract H_BC_VALUES=====3 " + std::to_string(h_bc_values[3]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====0 " + std::to_string(h_sigmas[0]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
+//   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
   for (VertexT j=0; j < end_src; j++)
   {
     util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
@@ -195,7 +193,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   }
   
     //edits done
-  util::PrintMsg("--------------------------\n===========FINALLLLLLLLLLLL first H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
+  util::PrintMsg("--------------------------\n===========FINALLLLLLLLLLLL first H_TOTAL_BC_VALUES====0 " + h_total_bc_values, !quiet_mode);
 
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
