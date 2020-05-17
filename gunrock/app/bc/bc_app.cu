@@ -180,11 +180,11 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
-  for (i=0; i < end_src; i++)
+  for (j=0; j < end_src; j++)
   {
     util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
 
-     h_total_bc_values[i] += h_bc_values[i];   // aggregate the sums into the first array
+     h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
   }
   //edited for loop end
   }
