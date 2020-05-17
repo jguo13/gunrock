@@ -167,18 +167,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   cpu_timer.Start();
   // Copy out results
-  util::PrintMsg("========TEST CODE PRINT3=========%c", 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 _values,!quiet_mode);
+
 
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
             
