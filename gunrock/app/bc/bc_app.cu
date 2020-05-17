@@ -121,7 +121,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   // edits done
   VertexT src;
-            
+  for (VertexT k=0; k < end_src; k++)
+  {
+    util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
+
+     h_total_bc_values[k] = 0;   // aggregate the sums into the first array
+  }      
 
   for (VertexT i = start_src; i < end_src; ++i) {
 
