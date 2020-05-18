@@ -138,13 +138,14 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
+      auto run_index = run_num % num_srcs;
+
       for (VertexT i = start_src; i < end_src; ++i) {
         
 //       ValueT *h_bc_values = new ValueT[graph.nodes];
 //       ValueT *h_sigmas = new ValueT[graph.nodes];
 //       VertexT *h_labels = new VertexT[graph.nodes];
     
-      auto run_index = run_num % num_srcs;
 //       src = srcs[run_index];
 
       src = i;
