@@ -233,10 +233,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 
   util::PrintMsg("--------------------------\n===========START The total of the BC list==================");
-  for (VertexT l=0; l < end_src; l++)
-  {
-    util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
-  }
+//   for (VertexT l=0; l < end_src; l++)
+//   {
+//     util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
+//   }
    util::PrintMsg("--------------------------\n===========END The total of the BC list==================" );
   return retval;
 }
