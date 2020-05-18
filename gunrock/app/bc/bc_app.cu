@@ -217,12 +217,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   // Display_Performance_Profiling(&enactor);
   // #endif
 
-    //edited for loop end
-  }
+
   // Clean up
   GUARD_CU(enactor.Release(target));
   GUARD_CU(problem.Release(target));
-    
+       //edited for loop end
+  } 
   delete[] h_bc_values;
   h_bc_values = NULL;
   delete[] h_sigmas;
