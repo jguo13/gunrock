@@ -102,12 +102,13 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   int num_srcs = srcs.size();
   
   VertexT src;
-//   for (VertexT k=0; k < end_src; k++)
-//   {
-//      h_total_bc_values[k] = 0;   // aggregate the sums into the first array
-//   }   
+  ValueT *h_total_bc_values = new ValueT[graph.nodes];
+
+  for (VertexT k=0; k < end_src; k++)
+  {
+     h_total_bc_values[k] = 0;   // aggregate the sums into the first array
+  }   
             
-//   ValueT *h_total_bc_values = new ValueT[graph.nodes];
 
             
 
@@ -183,11 +184,16 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   cpu_timer.Start();
   // Copy out results
+  for (VertexT j=0; j < end_src; j++)
+  {
+    util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
 
+     h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
+  }
  //edits done
 }   
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
-  util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+  util::PrintMsg("--------------------------\nH_total_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
 
   
     //edit start
@@ -209,12 +215,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 //   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====1 " + std::to_string(h_sigmas[1]), !quiet_mode);
 //   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA====2 " + std::to_string(h_sigmas[2]), !quiet_mode);
 //   util::PrintMsg("--------------------------\nAFTER problem extract SIGMA=====3 " + std::to_string(h_sigmas[3]), !quiet_mode);
-//   for (VertexT j=0; j < end_src; j++)
-//   {
-//     util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
 
-//      h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
-//   }
 
   
 
