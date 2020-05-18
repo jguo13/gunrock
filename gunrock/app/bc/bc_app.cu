@@ -100,7 +100,6 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   ValueT *h_sigmas = new ValueT[graph.nodes];
   VertexT *h_labels = new VertexT[graph.nodes];
   ValueT *h_total_bc_values = new ValueT[graph.nodes];
-  util::PrintMsg("===========total nodes==================" + std::to_string(graph.nodes) + !quiet_mode);
 
   // Allocate problem and enactor on GPU, and initialize them
   ProblemT problem(parameters);
@@ -118,7 +117,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   end_src = graph.nodes;
            
             
-            
+  util::PrintMsg("total nodes====0 " + std::to_string(end_src), !quiet_mode);
+
 
   // edits done
   VertexT src;
