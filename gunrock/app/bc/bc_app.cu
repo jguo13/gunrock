@@ -225,16 +225,17 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   total_timer.Stop();
 
   info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
-  return retval;
-  //edited for loop end
+    //edited for loop end
   }
+
+
   util::PrintMsg("--------------------------\n===========START The total of the BC list==================" + !quiet_mode);
   for (VertexT l=0; l < end_src; l++)
   {
     util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
   }
    util::PrintMsg("--------------------------\n===========END The total of the BC list==================" + !quiet_mode);
-
+  return retval;
 }
 
 }  // namespace bc
