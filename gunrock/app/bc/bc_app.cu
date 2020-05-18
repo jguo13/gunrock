@@ -111,10 +111,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
             
 
-  // Allocate host-side array (for both reference and GPU-computed results)
-//   ValueT *h_bc_values = new ValueT[graph.nodes];
-//   ValueT *h_sigmas = new ValueT[graph.nodes];
-//   VertexT *h_labels = new VertexT[graph.nodes];
+//   Allocate host-side array (for both reference and GPU-computed results)
+  ValueT *h_bc_values = new ValueT[graph.nodes];
+  ValueT *h_sigmas = new ValueT[graph.nodes];
+  VertexT *h_labels = new VertexT[graph.nodes];
 
   // Allocate problem and enactor on GPU, and initialize them
   ProblemT problem(parameters);
@@ -138,9 +138,9 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
         
-      ValueT *h_bc_values = new ValueT[graph.nodes];
-      ValueT *h_sigmas = new ValueT[graph.nodes];
-      VertexT *h_labels = new VertexT[graph.nodes];
+//       ValueT *h_bc_values = new ValueT[graph.nodes];
+//       ValueT *h_sigmas = new ValueT[graph.nodes];
+//       VertexT *h_labels = new VertexT[graph.nodes];
     
       auto run_index = run_num % num_srcs;
 //       src = srcs[run_index];
@@ -188,12 +188,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
   
     //edit start
-  delete[] h_bc_values;
-  h_bc_values = NULL;
-  delete[] h_sigmas;
-  h_sigmas = NULL;
-  delete[] h_labels;
-  h_labels = NULL;
+//   delete[] h_bc_values;
+//   h_bc_values = NULL;
+//   delete[] h_sigmas;
+//   h_sigmas = NULL;
+//   delete[] h_labels;
+//   h_labels = NULL;
     
 
  //edits done
