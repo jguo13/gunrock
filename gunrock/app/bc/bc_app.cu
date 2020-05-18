@@ -85,6 +85,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::CpuTimer cpu_timer, total_timer;
   cpu_timer.Start();
   total_timer.Start();
+            
+  VertexT start_src;
+  VertexT end_src;
+  start_src = 0;
+  end_src = graph.nodes;
+           
   for (VertexT i = start_src; i < end_src; ++i) {
 
   // parse configurations from parameters
@@ -112,11 +118,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   // perform the algorithm
   // edits
-  VertexT start_src;
-  VertexT end_src;
-  start_src = 0;
-  end_src = graph.nodes;
-           
+
             
   util::PrintMsg("total nodes====0 " + std::to_string(end_src), !quiet_mode);
 
