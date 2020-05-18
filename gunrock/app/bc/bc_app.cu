@@ -91,7 +91,6 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   start_src = 0;
   end_src = graph.nodes;
            
-  for (VertexT i = start_src; i < end_src; ++i) {
 
   // parse configurations from parameters
   bool quiet_mode = parameters.Get<bool>("quiet");
@@ -101,6 +100,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   std::vector<VertexT> srcs = parameters.Get<std::vector<VertexT>>("srcs");
   int num_srcs = srcs.size();
+  for (VertexT i = start_src; i < end_src; ++i) {
 
   // Allocate host-side array (for both reference and GPU-computed results)
   ValueT *h_bc_values = new ValueT[graph.nodes];
