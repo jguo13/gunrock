@@ -135,9 +135,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   // edits done
    
 
-  for (VertexT i = start_src; i < end_src; ++i) {
+
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
+      for (VertexT i = start_src; i < end_src; ++i) {
         
 //       ValueT *h_bc_values = new ValueT[graph.nodes];
 //       ValueT *h_sigmas = new ValueT[graph.nodes];
@@ -154,6 +155,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
+      //edits done
+      } 
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
       util::PrintMsg(
@@ -181,8 +184,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       }
   
   }
- //edits done
-} 
+
   cpu_timer.Start();
   // Copy out results
 
