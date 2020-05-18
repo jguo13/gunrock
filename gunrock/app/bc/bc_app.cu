@@ -100,6 +100,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   ValueT *h_sigmas = new ValueT[graph.nodes];
   VertexT *h_labels = new VertexT[graph.nodes];
   ValueT *h_total_bc_values = new ValueT[graph.nodes];
+  util::PrintMsg("===========total nodes==================" + std::to_string(graph.nodes) + !quiet_mode);
 
   // Allocate problem and enactor on GPU, and initialize them
   ProblemT problem(parameters);
@@ -189,16 +190,9 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 //      h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
   }
-  //edited for loop end
-  }
+
   
     //edits done
-  util::PrintMsg("--------------------------\n===========START The total of the BC list==================" + !quiet_mode);
-  for (VertexT l=0; l < end_src; l++)
-  {
-    util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
-  }
-   util::PrintMsg("--------------------------\n===========END The total of the BC list==================" + !quiet_mode);
 
   if (validation == "last") {
     auto run_index = (num_runs - 1) % num_srcs;
@@ -232,6 +226,15 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
   return retval;
+  //edited for loop end
+  }
+  util::PrintMsg("--------------------------\n===========START The total of the BC list==================" + !quiet_mode);
+  for (VertexT l=0; l < end_src; l++)
+  {
+    util::PrintMsg("\nindex: " + std::to_string(l)+ "bc_value: " + std::to_string(h_total_bc_values[l]), !quiet_mode);
+  }
+   util::PrintMsg("--------------------------\n===========END The total of the BC list==================" + !quiet_mode);
+
 }
 
 }  // namespace bc
