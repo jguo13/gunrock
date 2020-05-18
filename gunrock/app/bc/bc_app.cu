@@ -85,6 +85,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   util::CpuTimer cpu_timer, total_timer;
   cpu_timer.Start();
   total_timer.Start();
+  for (VertexT i = start_src; i < end_src; ++i) {
 
   // parse configurations from parameters
   bool quiet_mode = parameters.Get<bool>("quiet");
@@ -127,7 +128,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
      h_total_bc_values[k] = 0;   // aggregate the sums into the first array
   }      
 
-  for (VertexT i = start_src; i < end_src; ++i) {
+//   for (VertexT i = start_src; i < end_src; ++i) {
 
   for (int run_num = 0; run_num < num_runs; ++run_num) {
       auto run_index = run_num % num_srcs;
@@ -224,7 +225,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   cpu_timer.Stop();
   total_timer.Stop();
 
-  info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
+//   info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
     //edited for loop end
   }
 
