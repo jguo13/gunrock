@@ -178,8 +178,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
             reference_sigmas == NULL ? NULL : reference_sigmas[run_index],
             reference_labels == NULL ? NULL : reference_labels[run_index], true);
       }
- //edits done
-  }     
+  
   }
 
   cpu_timer.Start();
@@ -187,7 +186,10 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
-  
+  util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
+
+ //edits done
+}     
     //edit start
 //   delete[] h_bc_values;
 //   h_bc_values = NULL;
