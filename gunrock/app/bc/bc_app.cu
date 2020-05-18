@@ -100,13 +100,22 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
   std::vector<VertexT> srcs = parameters.Get<std::vector<VertexT>>("srcs");
   int num_srcs = srcs.size();
+  
+  VertexT src;
+  for (VertexT k=0; k < end_src; k++)
+  {
+     h_total_bc_values[k] = 0;   // aggregate the sums into the first array
+  }   
+            
+  ValueT *h_total_bc_values = new ValueT[graph.nodes];
+
+            
   for (VertexT i = start_src; i < end_src; ++i) {
 
   // Allocate host-side array (for both reference and GPU-computed results)
   ValueT *h_bc_values = new ValueT[graph.nodes];
   ValueT *h_sigmas = new ValueT[graph.nodes];
   VertexT *h_labels = new VertexT[graph.nodes];
-  ValueT *h_total_bc_values = new ValueT[graph.nodes];
 
   // Allocate problem and enactor on GPU, and initialize them
   ProblemT problem(parameters);
@@ -124,11 +133,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 
   // edits done
-  VertexT src;
-  for (VertexT k=0; k < end_src; k++)
-  {
-     h_total_bc_values[k] = 0;   // aggregate the sums into the first array
-  }      
+   
 
 //   for (VertexT i = start_src; i < end_src; ++i) {
 
@@ -213,23 +218,24 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   // Display_Performance_Profiling(&enactor);
   // #endif
 
+
   // Clean up
   GUARD_CU(enactor.Release(target));
   GUARD_CU(problem.Release(target));
-
+    
   delete[] h_bc_values;
   h_bc_values = NULL;
   delete[] h_sigmas;
   h_sigmas = NULL;
   delete[] h_labels;
   h_labels = NULL;
-
+    //edited for loop end
+  }
   cpu_timer.Stop();
   total_timer.Stop();
 
-//   info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
-    //edited for loop end
-  }
+  info.Finalize(cpu_timer.ElapsedMillis(), total_timer.ElapsedMillis());
+
 
 
   util::PrintMsg("--------------------------\n===========START The total of the BC list==================");
