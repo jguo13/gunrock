@@ -184,12 +184,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   cpu_timer.Start();
   // Copy out results
 
-
+ //edits done
+}   
   GUARD_CU(problem.Extract(h_bc_values, h_sigmas, h_labels));
   util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
 
- //edits done
-}     
+  
     //edit start
 //   delete[] h_bc_values;
 //   h_bc_values = NULL;
