@@ -187,7 +187,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   {
 //     util::PrintMsg("--------------------------\n===========irst H_TOTAL_BC_VALUES====0 " + std::to_string(h_total_bc_values[0]), !quiet_mode);
 
-     h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
+//      h_total_bc_values[j] += h_bc_values[j];   // aggregate the sums into the first array
   }
   //edited for loop end
   }
