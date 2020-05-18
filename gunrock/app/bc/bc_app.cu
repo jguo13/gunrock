@@ -218,7 +218,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   // Display_Performance_Profiling(&enactor);
   // #endif
 
-
+    //edited for loop end
+  }
   // Clean up
   GUARD_CU(enactor.Release(target));
   GUARD_CU(problem.Release(target));
@@ -229,8 +230,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   h_sigmas = NULL;
   delete[] h_labels;
   h_labels = NULL;
-    //edited for loop end
-  }
+
   cpu_timer.Stop();
   total_timer.Stop();
 
