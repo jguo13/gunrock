@@ -102,12 +102,12 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   int num_srcs = srcs.size();
   
   VertexT src;
-  for (VertexT k=0; k < end_src; k++)
-  {
-     h_total_bc_values[k] = 0;   // aggregate the sums into the first array
-  }   
+//   for (VertexT k=0; k < end_src; k++)
+//   {
+//      h_total_bc_values[k] = 0;   // aggregate the sums into the first array
+//   }   
             
-  ValueT *h_total_bc_values = new ValueT[graph.nodes];
+//   ValueT *h_total_bc_values = new ValueT[graph.nodes];
 
             
   for (VertexT i = start_src; i < end_src; ++i) {
