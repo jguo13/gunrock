@@ -207,26 +207,26 @@ struct Problem : ProblemBase<_GraphT, _FLAG> {
       GUARD_CU(deltas.EnsureSize_(nodes, target));
 
       // Reset data
-      GUARD_CU(labels.ForEach(
-          [] __host__ __device__(VertexT & x) {
-            x = util::PreDefinedValues<VertexT>::InvalidValue;  //(VertexT)-1;
-          },
-          nodes, target, this->stream));
+//       GUARD_CU(labels.ForEach(
+//           [] __host__ __device__(VertexT & x) {
+//             x = util::PreDefinedValues<VertexT>::InvalidValue;  //(VertexT)-1;
+//           },
+//           nodes, target, this->stream));
 
-      GUARD_CU(preds.ForEach(
-          [] __host__ __device__(VertexT & x) {
-            x = util::PreDefinedValues<VertexT>::InvalidValue;  //(VertexT)-2;
-          },
-          nodes, target, this->stream));
+//       GUARD_CU(preds.ForEach(
+//           [] __host__ __device__(VertexT & x) {
+//             x = util::PreDefinedValues<VertexT>::InvalidValue;  //(VertexT)-2;
+//           },
+//           nodes, target, this->stream));
 
       // ?? Do I actually want to be resetting this?
 //       GUARD_CU(bc_values.ForEach(
 //           [] __host__ __device__(ValueT & x) { x = (ValueT)0.0; }, nodes,
 //           target, this->stream));
 
-      GUARD_CU(deltas.ForEach(
-          [] __host__ __device__(ValueT & x) { x = (ValueT)0.0; }, nodes,
-          target, this->stream));
+//       GUARD_CU(deltas.ForEach(
+//           [] __host__ __device__(ValueT & x) { x = (ValueT)0.0; }, nodes,
+//           target, this->stream));
 
 //       GUARD_CU(sigmas.ForEach(
 //           [] __host__ __device__(ValueT & x) { x = (ValueT)0.0; }, nodes,
