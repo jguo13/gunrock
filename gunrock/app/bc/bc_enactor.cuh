@@ -489,11 +489,11 @@ class Enactor
   cudaError_t Release(util::Location target = util::LOCATION_ALL) {
     cudaError_t retval = cudaSuccess;
     GUARD_CU(BaseEnactor::Release(target));
-    delete[] forward_iterations;
-    forward_iterations = NULL;
-    delete[] backward_iterations;
-    backward_iterations = NULL;
-    problem = NULL;
+//     delete[] forward_iterations;
+//     forward_iterations = NULL;
+//     delete[] backward_iterations;
+//     backward_iterations = NULL;
+//     problem = NULL;
     return retval;
   }
 
