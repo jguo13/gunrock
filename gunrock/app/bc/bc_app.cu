@@ -89,7 +89,9 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT start_src;
   VertexT end_src;
   start_src = 0;
-  end_src = graph.nodes;
+  end_src = 10000;
+//   end_src = graph.nodes;
+        
            
 
   // parse configurations from parameters
@@ -159,7 +161,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       //edits done
       } 
       cpu_timer.Stop();
-      info.CollectSingleRun(cpu_timer.ElapsedMillis());
+//       info.CollectSingleRun(cpu_timer.ElapsedMillis());
       util::PrintMsg("___________DONE_______________", !quiet_mode);
 
 //       util::PrintMsg(
