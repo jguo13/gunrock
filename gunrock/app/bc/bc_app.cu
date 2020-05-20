@@ -160,12 +160,14 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       } 
       cpu_timer.Stop();
       info.CollectSingleRun(cpu_timer.ElapsedMillis());
-      util::PrintMsg(
-          "--------------------------\nRun " + std::to_string(run_num) +
-              " elapsed: " + std::to_string(cpu_timer.ElapsedMillis()) +
-              " ms, src = " + std::to_string(src) + ", #iterations = " +
-              std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
-          !quiet_mode);
+      util::PrintMsg("___________DONE_______________", !quiet_mode);
+
+//       util::PrintMsg(
+//           "--------------------------\nRun " + std::to_string(run_num) +
+//               " elapsed: " + std::to_string(cpu_timer.ElapsedMillis()) +
+//               " ms, src = " + std::to_string(src) + ", #iterations = " +
+//               std::to_string(enactor.enactor_slices[0].enactor_stats.iteration),
+//           !quiet_mode);
 //       util::PrintMsg("--------------------------\nH_BC_VALUES====0 " + std::to_string(h_bc_values[0]), !quiet_mode);
 //       util::PrintMsg("--------------------------\nH_BC_VALUES=====1 " + std::to_string(h_bc_values[1]), !quiet_mode);
 //       util::PrintMsg("--------------------------\nH_BC_VALUES====2 " + std::to_string(h_bc_values[2]), !quiet_mode);
