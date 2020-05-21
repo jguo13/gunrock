@@ -39,7 +39,7 @@ template <typename SizeT, typename ValueT>
 void DisplaySolution(ValueT *sigmas, ValueT *bc_values, SizeT nodes,
                      bool quiet = false) {
   if (quiet) return;
-  if (nodes > 40) nodes = 40;
+//   if (nodes > 40) nodes = 40;
 
   util::PrintMsg("[", true, false);
   for (SizeT v = 0; v < nodes; ++v) {
