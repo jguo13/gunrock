@@ -89,7 +89,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
   VertexT start_src;
   VertexT end_src;
   start_src = 0;
-  end_src = 10000;
+  end_src = 500000;
 //   end_src = graph.nodes;
         
            
