@@ -158,7 +158,7 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       util::PrintMsg("__________________________", !quiet_mode);
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
-      util::PrintMsg("___________enact done_______________", + std::to_string(src) + !quiet_mode);
+      util::PrintMsg("___________enact done_______________" + std::to_string(src), !quiet_mode);
 
       //edits done
       } 
