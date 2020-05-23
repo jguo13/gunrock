@@ -602,9 +602,11 @@ class Enactor
    * \return cudaError_t error message(s), if any
    */
   cudaError_t Enact(VertexT src) {
+    util::PrintMsg("enact enter.");
     cudaError_t retval = cudaSuccess;
     GUARD_CU(this->Run_Threads(this));
     util::PrintMsg("GPU BC Done.", this->flag & Debug);
+    util::PrintMsg("enact done.");
     return retval;
   }
 
