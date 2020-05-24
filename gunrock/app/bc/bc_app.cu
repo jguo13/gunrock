@@ -159,7 +159,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
       cpu_timer.Start();
       GUARD_CU(enactor.Enact(src));
       util::PrintMsg("___________enact done_______________" + std::to_string(src), !quiet_mode);
-
+      GUARD_CU(enactor.Release(target));
+//       GUARD_CU(problem.Release(target));
       //edits done
       } 
       util::PrintMsg("___________DONE_______________", !quiet_mode);
@@ -250,8 +251,8 @@ cudaError_t RunTests(util::Parameters &parameters, GraphT &graph,
 
 
   // Clean up
-  GUARD_CU(enactor.Release(target));
-  GUARD_CU(problem.Release(target));
+//   GUARD_CU(enactor.Release(target));
+//   GUARD_CU(problem.Release(target));
        //edited for loop end
 
   delete[] h_bc_values;
