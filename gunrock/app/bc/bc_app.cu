@@ -163,6 +163,7 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
     util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
                   __LINE__);
   }
+  printf("=========================here1=========================");
 
   for (int gpu = 0; gpu < num_gpus; gpu++) {
     util::SetDevice(gpu_idx[gpu]);
@@ -173,10 +174,12 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
   cpu_timer.Stop();
 
   float elapsed = cpu_timer.ElapsedMillis();
+  printf("=========================extract begin=========================");
 
   // Copy out results
   util::GRError(problem->Extract(h_sigmas, h_bc_values, h_labels),
                 "BC Problem Data Extraction Failed", __FILE__, __LINE__);
+  printf("=========================extract finish=========================");
 
   output->node_value1 = (Value *)&h_bc_values[0];
 
