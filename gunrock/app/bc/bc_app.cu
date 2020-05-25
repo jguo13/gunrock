@@ -331,7 +331,7 @@ void gunrock_bc(GRGraph *grapho, const GRGraph *graphi, const GRSetup *config,
   }
   for (int gpu = 0; gpu < num_gpus; ++gpu) {
     if (!config->quiet) {
-      printf(" %d ", gpu_idx[gpu]);
+      printf(" TESTEST %d ", gpu_idx[gpu]);
     }
     util::SetDevice(gpu_idx[gpu]);
     for (int i = 0; i < num_gpus * 2; ++i) {
