@@ -155,6 +155,9 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
 
   cpu_timer.Start();
   for (VertexId i = start_src; i < end_src; ++i) {
+   util::cpu_mt::PrintMessage("TEST MESSAGE printmessage==============================");
+ printf("TEST MESSAGE printf==============================");
+
     util::GRError(problem->Reset(i, enactor->GetFrontierType(),
                                  max_queue_sizing, max_queue_sizing1),
                   "BC Problem Data Reset Failed", __FILE__, __LINE__);
@@ -163,7 +166,6 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
     util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
                   __LINE__);
   }
- util::cpu_mt::PrintMessage("TEST MESSAGE==============================");
 
   printf("=========================here1=========================");
 
