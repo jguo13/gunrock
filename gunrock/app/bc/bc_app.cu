@@ -328,7 +328,7 @@ void gunrock_bc(GRGraph *grapho, const GRGraph *graphi, const GRSetup *config,
   streams = new cudaStream_t[num_gpus * num_gpus * 2];
   context = new ContextPtr[num_gpus * num_gpus];
   if (!config->quiet) {
-    printf(" using %d GPUs:", num_gpus);
+    printf(" TESTEST=================using %d GPUs:", num_gpus);
   }
   for (int gpu = 0; gpu < num_gpus; ++gpu) {
     if (!config->quiet) {
