@@ -155,9 +155,9 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
 
   cpu_timer.Start();
   for (VertexId i = start_src; i < end_src; ++i) {
-   util::cpu_mt::PrintMessage("TEST MESSAGE printmessage==============================");
- printf("TEST MESSAGE printf==============================");
-      util::PrintMsg("___________TEST MESSAGE printmessage2_______________" + std::to_string(src), !quiet_mode);
+//    util::cpu_mt::PrintMessage("TEST MESSAGE printmessage==============================");
+//  printf("TEST MESSAGE printf==============================");
+//       util::PrintMsg("___________TEST MESSAGE printmessage2_______________" + std::to_string(src), !quiet_mode);
 
     util::GRError(problem->Reset(i, enactor->GetFrontierType(),
                                  max_queue_sizing, max_queue_sizing1),
