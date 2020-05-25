@@ -163,6 +163,8 @@ void runBC(GRGraph *output, BC_Parameter *parameter) {
     util::GRError(enactor->Enact(i), "BC Problem Enact Failed", __FILE__,
                   __LINE__);
   }
+ util::cpu_mt::PrintMessage("TEST MESSAGE==============================");
+
   printf("=========================here1=========================");
 
   for (int gpu = 0; gpu < num_gpus; gpu++) {
