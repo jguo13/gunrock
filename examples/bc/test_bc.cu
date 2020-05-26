@@ -244,7 +244,7 @@ void ReferenceBC(const Csr<VertexId, SizeT, Value> &graph, Value *bc_values,
                      RowFirstTupleCompare<EdgeTupleType>);
 
     if (!quiet) {
-      printf("CPU BC finished in %lf msec.", elapsed);
+      printf("TEST======CPU BC finished in %lf msec.", elapsed);
     }
   } else {
     // Simple BFS pass to get single pass BC
