@@ -569,8 +569,8 @@ cudaError_t RunTests(Info<VertexId, SizeT, Value> *info) {
       if (!quiet_mode) {
         printf("Computing reference value ...\n");
       }
-      ReferenceBC(*graph, reference_check_bc_values, reference_check_sigmas,
-                  reference_check_labels, src, quiet_mode);
+//       ReferenceBC(*graph, reference_check_bc_values, reference_check_sigmas,
+//                   reference_check_labels, src, quiet_mode);
       if (!quiet_mode) {
         printf("\n");
       }
@@ -584,6 +584,7 @@ cudaError_t RunTests(Info<VertexId, SizeT, Value> *info) {
       fin.close();
     }
   }
+  printf("copy out results ...\n");
 
   cpu_timer.Start();
   // Copy out results
