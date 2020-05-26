@@ -584,10 +584,13 @@ cudaError_t RunTests(Info<VertexId, SizeT, Value> *info) {
       fin.close();
     }
   }
+  
   printf("copy out results ...\n");
 
   cpu_timer.Start();
   // Copy out results
+  printf("EXTRACTION ENTER ...\n");
+
   if (retval = util::GRError(problem->Extract(h_sigmas, h_bc_values, h_labels),
                              "BC Problem Data Extraction Failed", __FILE__,
                              __LINE__))
