@@ -129,9 +129,9 @@ template <typename SizeT, typename Value>
 void DisplaySolution(Value *sigmas, Value *bc_values, SizeT nodes,
                      bool quiet = false) {
   if (quiet) return;
-    if (nodes > 4) {
+//     if (nodes < 40) {
 
-//   if (nodes < 40) {
+  if (nodes > 4) {
     printf("[");
     for (SizeT i = 0; i < nodes; ++i) {
       PrintValue(i);
